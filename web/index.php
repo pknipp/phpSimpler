@@ -37,7 +37,7 @@ $app->get('/', function(Request $request, Response $response, LoggerInterface $l
   return $twig->render($response, 'index.twig');
 });
 
-// The following four routes return/do the same thing.
+// Each of the following 4 routes does the same thing: render instructions as html.
 $routes = ['/html', '/html/', '/json', '/json/'];
 
 foreach ($routes as $route) {
@@ -46,21 +46,6 @@ foreach ($routes as $route) {
     return $twig->render($response, 'instructions.twig');
   });
 };
-
-// $app->get('/html/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  // $logger->debug('logging output from /html/ route.');
-  // return $twig->render($response, 'instructions.twig');
-// });
-//
-// $app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  // $logger->debug('logging output from /json route.');
-  // return $twig->render($response, 'instructions.twig');
-// });
-//
-// $app->get('/json/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  // $logger->debug('logging output from /json/ route.');
-  // return $twig->render($response, 'instructions.twig');
-// });
 
 $app->get('/html/{data}', function(string $data, Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $data = ['data' => $data];
