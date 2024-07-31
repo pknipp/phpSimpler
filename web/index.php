@@ -57,7 +57,7 @@ $app->get('/json/', function(Request $request, Response $response, LoggerInterfa
   return $twig->render($response, 'instructions.twig');
 });
 
-$app->get('/html/{data}', function(string $data, Request $request, Response $response) {
+$app->get('/html/{data}', function(string $data, Request $request, Response $response, Twig $twig) {
   $data = ['data' => $data];
   // $logger->debug('logging output');
   return $twig->render($response, 'html.twig', $data);
