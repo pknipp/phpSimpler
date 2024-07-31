@@ -37,12 +37,12 @@ $app->get('/', function(Request $request, Response $response, LoggerInterface $l
   return $twig->render($response, 'index.twig');
 });
 
-$app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+$app->get('/html', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $logger->debug('logging output.');
-  return $twig->render($response, 'json.twig');
+  return $twig->render($response, 'html.twig');
 });
 
-$app->get('/capture/{data}', function(string $data, Request $request, Response $response) {
+$app->get('/json/{data}', function(string $data, Request $request, Response $response) {
   $response->getBody()->write(json_encode(['data' => $data]));
   $response = $response->withHeader('Content-Type', 'application/json');
   return $response;
