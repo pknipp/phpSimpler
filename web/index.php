@@ -10,6 +10,7 @@ use Monolog\Level;
 use Monolog\Logger;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
+use Psr\Container\ContainerInterface;
 
 require(__DIR__.'/../vendor/autoload.php');
 
