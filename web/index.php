@@ -3,6 +3,7 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Log\LoggerInterface;
+
 use DI\Container;
 use DI\Bridge\Slim\Bridge;
 use Monolog\Handler\StreamHandler;
@@ -10,7 +11,6 @@ use Monolog\Level;
 use Monolog\Logger;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
-use Psr\Container\ContainerInterface;
 
 require(__DIR__.'/../vendor/autoload.php');
 
@@ -42,9 +42,8 @@ $app->get('/json', function(Request $request, Response $response, LoggerInterfac
   return $twig->render($response, 'json.twig');
 });
 
-$app->get('/capture/{data}', function(Request $request, Response $response, $args) use ($container) {
-  $routeParams = $request->getAttribute('routeParams');
-  $data = $routeParams['data'];
+$app->get('/capture/{data}', function(Request $request, Response $response, $args) {
+  $data = $args['data'];
   return $response->withJson(['data' => $data]);
 });
 
