@@ -41,4 +41,11 @@ $app->get('/json', function(Request $request, Response $response, LoggerInterfac
   return $twig->render($response, 'json.twig');
 });
 
+$app->get('/capture/{data}', function(Request $request, Response $response, $args, LoggerInterface $logger, Twig $twig) {
+  $logger->debug('logging output.');
+  $data = $args['data'];
+  // return $twig->render($response, 'json.twig');
+  return $response->withJson(['data' => $data]);
+});
+
 $app->run();
