@@ -43,7 +43,9 @@ $app->get('/json', function(Request $request, Response $response, LoggerInterfac
 });
 
 $app->get('/capture/{data}', function(string $data, Request $request, Response $response) {
-  return $response->withJson(['data' => $data]);
+  $response->getBody()->write(json_encode(['data' => $data]));
+  $response = $response->withHeader('Content-Type', 'application/json');
+  return $response;
 });
 
 $app->run();
