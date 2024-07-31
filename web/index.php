@@ -41,8 +41,7 @@ $app->get('/json', function(Request $request, Response $response, LoggerInterfac
   return $twig->render($response, 'json.twig');
 });
 
-$app->get('/capture/{data}', function(Request $request, Response $response, ContainerInterface $container)
-{
+$app->get('/capture/{data}', function(Request $request, Response $response, $args) use ($container) {
   $routeParams = $request->getAttribute('routeParams');
   $data = $routeParams['data'];
   return $response->withJson(['data' => $data]);
