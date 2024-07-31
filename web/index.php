@@ -59,13 +59,14 @@ $app->get('/json/', function(Request $request, Response $response, LoggerInterfa
 
 $app->get('/html/{data}', function(string $data, Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $data = ['data' => $data];
-  $logger->debug('logging output');
+  $logger->debug('logging output from /html/{data} route');
   return $twig->render($response, 'html.twig', $data);
 });
 
-$app->get('/json/{data}', function(string $data, Request $request, Response $response) {
+$app->get('/json/{data}', function(string $data, Request $request, Response $response, LoggerInterface $logger) {
   $response->getBody()->write(json_encode(['data' => $data]));
   $response = $response->withHeader('Content-Type', 'application/json');
+  $logger->debug('logging output from /json/{data} route');
   return $response;
 });
 
