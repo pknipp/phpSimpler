@@ -37,25 +37,25 @@ $app->get('/', function(Request $request, Response $response, LoggerInterface $l
   return $twig->render($response, 'index.twig');
 });
 
-$app->get('/html', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  $logger->debug('logging output.');
+$app->get(['/html', '/html/', '/json', '/json/'], function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  $logger->debug('logging output from instructions routes.');
   return $twig->render($response, 'instructions.twig');
 });
 
-$app->get('/html/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  $logger->debug('logging output.');
-  return $twig->render($response, 'instructions.twig');
-});
-
-$app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  $logger->debug('logging output.');
-  return $twig->render($response, 'instructions.twig');
-});
-
-$app->get('/json/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
-  $logger->debug('logging output.');
-  return $twig->render($response, 'instructions.twig');
-});
+// $app->get('/html/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  // $logger->debug('logging output.');
+  // return $twig->render($response, 'instructions.twig');
+// });
+//
+// $app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  // $logger->debug('logging output.');
+  // return $twig->render($response, 'instructions.twig');
+// });
+//
+// $app->get('/json/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  // $logger->debug('logging output.');
+  // return $twig->render($response, 'instructions.twig');
+// });
 
 $app->get('/html/{data}', function(string $data, Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $data = ['data' => $data];
