@@ -47,6 +47,11 @@ $app->get('/json', function(Request $request, Response $response, LoggerInterfac
   return $twig->render($response, 'jsonError.twig');
 });
 
+$app->get('/json/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  $logger->debug('logging output.');
+  return $twig->render($response, 'jsonError.twig');
+});
+
 $app->get('/json/{data}', function(string $data, Request $request, Response $response) {
   $response->getBody()->write(json_encode(['data' => $data]));
   $response = $response->withHeader('Content-Type', 'application/json');
