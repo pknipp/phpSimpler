@@ -39,17 +39,22 @@ $app->get('/', function(Request $request, Response $response, LoggerInterface $l
 
 $app->get('/html', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $logger->debug('logging output.');
-  return $twig->render($response, 'html.twig');
+  return $twig->render($response, 'instructions.twig');
+});
+
+$app->get('/html/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  $logger->debug('logging output.');
+  return $twig->render($response, 'instructions.twig');
 });
 
 $app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $logger->debug('logging output.');
-  return $twig->render($response, 'jsonError.twig');
+  return $twig->render($response, 'instructions.twig');
 });
 
 $app->get('/json/', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
   $logger->debug('logging output.');
-  return $twig->render($response, 'json.twig');
+  return $twig->render($response, 'instructions.twig');
 });
 
 $app->get('/json/{data}', function(string $data, Request $request, Response $response) {
