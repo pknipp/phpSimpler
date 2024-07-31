@@ -36,4 +36,9 @@ $app->get('/', function(Request $request, Response $response, LoggerInterface $l
   return $twig->render($response, 'index.twig');
 });
 
+$app->get('/json', function(Request $request, Response $response, LoggerInterface $logger, Twig $twig) {
+  $logger->debug('logging output.');
+  return $twig->render($response, 'json.twig');
+});
+
 $app->run();
